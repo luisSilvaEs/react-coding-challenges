@@ -1,0 +1,12 @@
+nav {
+    img {
+        width: 110px;
+    }
+
+    ul li {
+        @apply px-3;
+        a {
+            @apply text-2xl tracking-wide text-gray-800;
+        }
+    }
+}
