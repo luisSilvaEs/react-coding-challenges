@@ -1,5 +1,5 @@
 nav {
-    img {
+    .nav-logo-container img {
         width: 110px;
     }
 
@@ -7,6 +7,17 @@ nav {
         @apply px-3;
         a {
             @apply text-2xl tracking-wide text-gray-800;
+        }
+    }
+
+    button img {
+        width: 55px;
+    }
+
+    .nav-links-container.open-mobile-menu {
+        display: block;
+        li {
+            margin-top: 8px;
         }
     }
 }
