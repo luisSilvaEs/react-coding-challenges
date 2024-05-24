@@ -1,11 +1,9 @@
-import TopMenu from "../components/ui/Menu/Menus";
-import Card from "../components/ui/Card/Cards";
+import Card from "../../components/ui/card/Cards";
 import "./Home.scss";
 
 const Home = () => {
   return (
     <>
-      <TopMenu />
       <div className="container mx-auto px-4 py-4 mb-8">
         <h1>
           Welcome to <span>React coding</span> challenges implementations!!

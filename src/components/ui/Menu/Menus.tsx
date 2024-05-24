@@ -3,6 +3,8 @@ import logoURL from "../../../assets/img/logo-app.png";
 import menuIMGURL from "../../../assets/img/mobile-menu-icon.png";
 import "./Menus.scss";
 
+import { Link, NavLink } from "react-router-dom";
+
 const TopMenu = () => {
   const [open, setOpen] = useState(false);
 
@@ -23,13 +25,20 @@ const TopMenu = () => {
       >
         <ul className="sm:flex-reverse md:flex">
           <li>
-            <a href="">Home</a>
+            <NavLink
+              style={({ isActive }) => {
+                return isActive ? { color: "red" } : { color: "" };
+              }}
+              to="/"
+            >
+              Home
+            </NavLink>
           </li>
           <li>
-            <a href="">About</a>
+            <Link to="/about">About</Link>
           </li>
           <li>
-            <a href="">Contact</a>
+            <Link to="/contact">Contact</Link>
           </li>
         </ul>
       </div>
