@@ -1,7 +1,19 @@
+import { useState } from "react";
 import Card from "../../components/ui/card/Cards";
 import "./Home.scss";
 
-const Home = () => {
+interface Challenge {
+  id: string;
+  name: string;
+  description: string;
+  component?: string;
+}
+
+interface HomeProps {
+  exercisesPages: Challenge[];
+}
+
+const Home = ({ exercisesPages }: HomeProps) => {
   return (
     <>
       <div className="container mx-auto px-4 py-4 mb-8">
@@ -18,10 +30,16 @@ const Home = () => {
       <hr />
       <div className="container mx-auto px-4 mt-9">
         <h3>Challenges</h3>
-        <div className="md:columns-3 mt-5">
-          <Card />
-          <Card />
-          <Card />
+        <div className="grid md:grid-cols-3 gap-4 mt-5">
+          {exercisesPages.map((Exr, index) => (
+            <Card
+              name={Exr.name}
+              id={Exr.id}
+              description={Exr.description}
+              index={index + 1}
+              key={index}
+            />
+          ))}
         </div>
       </div>
     </>

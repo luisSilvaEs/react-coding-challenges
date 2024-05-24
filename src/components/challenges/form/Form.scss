@@ -1,0 +1,12 @@
+.b-form-component form {
+    input {
+        border-width: 1px;
+        border-radius: 4px;
+        border-color: #ccc;
+        &, label {
+            display: block;
+        }
+    }
+
+
+}
