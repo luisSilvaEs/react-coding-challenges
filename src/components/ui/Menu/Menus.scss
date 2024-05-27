@@ -6,7 +6,8 @@ nav {
     ul li {
         @apply px-3;
         a {
-            @apply text-2xl tracking-wide text-gray-800;
+            @apply text-2xl tracking-wide;
+            color: var(--text-primary);
         }
     }
 
@@ -19,5 +20,24 @@ nav {
         li {
             margin-top: 8px;
         }
+    }
+
+    .nav-buttons {
+        img {
+            width: 50px;
+        }
+
+        .nav-menu-mobile {
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+    }
+
+    .nav-menu-mobile--dark {
+        filter: invert(100%);
+    }
+
+    .nav-theme-switcher--dark img {
+        filter: invert(1);
     }
 }

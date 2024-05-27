@@ -36,9 +36,15 @@ const App = () => {
     },
   ]);
 
+  const [theme, setTheme] = useState("light");
+
+  const switchTheme = () => {
+    theme == "light" ? setTheme("dark") : setTheme("light");
+  };
+
   return (
-    <>
-      <TopMenu />
+    <div data-theme={theme}>
+      <TopMenu theme={theme} switchThemeFunction={switchTheme} />
       <Routes>
         <Route path="/" element={<Home exercisesPages={challenges} />} />
         <Route
@@ -48,7 +54,7 @@ const App = () => {
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
-    </>
+    </div>
   );
 };
 
