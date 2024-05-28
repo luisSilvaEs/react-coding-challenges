@@ -18,6 +18,6 @@ html, div {
   background-color: var(--background);
 }
 
-p {
+p, b, label {
     color: var(--text-secondary); 
 }

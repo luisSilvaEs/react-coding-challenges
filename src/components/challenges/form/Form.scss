@@ -35,4 +35,34 @@
         color: red;
     }
 
+    input.correct-email {
+        color: black;
+        border: 2px solid green;
+    }
+
+    .error-email-message {
+        display: flex;
+        align-items: center;
+        color: red;
+
+        &:not(input) {
+            margin: 8px 0;
+        }
+
+        svg {
+            display: inline-block;
+            margin-right: 5px;
+        }
+
+        span {
+            color: red;
+            font-size: 10px;
+        }
+    }
+
+    input.error-email-message {
+        color: black;
+        border: 1px solid red;
+    }
+
 }
