@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import "./Form.scss";
 
 const Form = () => {
-  const [emailUser, setEmailUser] = useState<string>("");
+  const emailUser = useRef<HTMLInputElement>(null);
   const [error, setError] = useState<string>(""); //This notation is named "generic" and even no necessary but improves code readibily
 
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -12,7 +12,6 @@ const Form = () => {
 
     if (emailRegex.test(email)) {
       setError("");
-      setEmailUser(email);
     }
   };
 
@@ -45,7 +44,7 @@ const Form = () => {
             className={
               error
                 ? "error-email-message"
-                : emailRegex.test(emailUser)
+                : emailRegex.test(emailUser.current?.value || "")
                 ? "correct-email"
                 : ""
             }
@@ -54,6 +53,7 @@ const Form = () => {
             onBlur={validateEmailOnLeaveInput}
             onChange={handleSetEmailUser}
             required
+            ref={emailUser}
           />
           {error && (
             <div className="error-email-message">
