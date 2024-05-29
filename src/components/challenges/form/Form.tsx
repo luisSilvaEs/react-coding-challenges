@@ -3,8 +3,11 @@ import Input from "./Input";
 import "./Form.scss";
 
 const Form = () => {
+  const username = useRef<HTMLInputElement>(null);
   const emailUser = useRef<HTMLInputElement>(null);
   const [errorEmailState, setError] = useState<string>(""); //This notation is named "generic" and even no necessary but improves code readibily
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
   const errorEmail = {
     icon: (
       <svg
@@ -26,18 +29,20 @@ const Form = () => {
       </svg>
     ),
     message: errorEmailState,
+    validationPattern: emailRegex,
   };
-
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
   const passwordUser = useRef<HTMLInputElement>(null);
   const [errorPasswordState, setErrorPassword] = useState<string>("");
 
+  const passwordRegex = /^(?=.*[A-Z])(?=.*[\*&\#\$!]).{6,}$/;
+
   const errorPassword = {
     message: errorPasswordState,
+    validationPattern: passwordRegex,
   };
 
-  const validateOnlyCorrectEmail = (
+  const validateFullEmailFormatAfterTyping = (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
     const email = event.target.value;
@@ -58,8 +63,6 @@ const Form = () => {
       setError("");
     }
   };
-
-  const passwordRegex = /^(?=.*[A-Z])(?=.*[\*&\#\$!]).{6,}$/;
 
   const validatePasswordOnLeaveInput = (
     event: React.ChangeEvent<HTMLInputElement>
@@ -83,38 +86,28 @@ const Form = () => {
       </div>
       <div className="container mx-auto b-form-component flex justify-center mt-9">
         <form action="" className="w-52">
-          <label htmlFor="username">Username:</label>
-          <input type="text" id="username" />
           <Input
-            classesForLabel="requiered"
-            classesForInput={
-              errorEmail.message
-                ? "error-email-message"
-                : emailRegex.test(emailUser.current?.value || "")
-                ? "correct-email"
-                : ""
-            }
-            error={errorEmail}
-            type="email"
-            id="email"
-            label="Email:"
-            value={emailUser}
-            handleBlur={validateEmailOnLeaveInput}
-            handleOnChange={validateOnlyCorrectEmail}
+            type="text"
+            id="username"
+            labelWording="Username:"
+            value={username}
           />
           <Input
             classesForLabel="requiered"
-            classesForInput={
-              errorPassword.message
-                ? "error-password-message"
-                : passwordRegex.test(passwordUser.current?.value || "")
-                ? "valid-password"
-                : ""
-            }
+            error={errorEmail}
+            type="email"
+            id="email"
+            labelWording="Email:"
+            value={emailUser}
+            handleBlur={validateEmailOnLeaveInput}
+            handleOnChange={validateFullEmailFormatAfterTyping}
+          />
+          <Input
+            classesForLabel="requiered"
             error={errorPassword}
             type="password"
             id="password"
-            label="Pasword:"
+            labelWording="Pasword:"
             value={passwordUser}
             handleBlur={validatePasswordOnLeaveInput}
           />

@@ -1,14 +1,15 @@
 interface ErrorInput {
-  icon?: any;
-  message: any;
+  icon?: JSX.Element;
+  message: string;
+  validationPattern?: RegExp;
 }
 
 interface InputProps {
-  classesForLabel?: any;
-  classesForInput?: any;
+  classesForLabel?: string;
+  classesForInput?: string;
   type: "email" | "text" | "password";
   id: string;
-  label: string;
+  labelWording: string;
   value?: any;
   error?: ErrorInput;
   handleBlur?: (event: React.ChangeEvent<HTMLInputElement>) => void;
@@ -20,7 +21,7 @@ const Input = ({
   classesForInput,
   type,
   id,
-  label,
+  labelWording,
   value,
   error,
   handleBlur,
@@ -29,7 +30,7 @@ const Input = ({
   return (
     <>
       <label htmlFor={type} className={classesForLabel}>
-        {label}
+        {labelWording}
       </label>
       <input
         type={type}
@@ -37,10 +38,16 @@ const Input = ({
         ref={value ? value : ""}
         onBlur={handleBlur}
         onChange={handleOnChange}
-        className={classesForInput}
+        className={`${classesForInput} ${
+          error && error.message
+            ? "error-message"
+            : error?.validationPattern?.test(value.current?.value || "")
+            ? "valid-password"
+            : ""
+        }`}
       />
       {error?.message && (
-        <div className="error-email-message">
+        <div className="error-message">
           {error.icon}
           <span>{error.message}</span>
         </div>
