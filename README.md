@@ -19,3 +19,4 @@ Requirements for the app are:
 ### References
 
 - [Top 15 React Coding Challenges to Hire React Developers](https://blog.imocha.io/react-coding-challenges)
+- [Landing Page Tutorial React Js](https://www.youtube.com/watch?v=GVjIflROwJ4)

@@ -53,7 +53,7 @@ const TopMenu = ({ theme, switchThemeFunction }: Props) => {
           </li>
         </ul>
       </div>
-      <div className="nav-buttons flex flex-col-reverse md:flex-col">
+      <div className="nav-buttons flex flex-col-reverse md:flex-col ">
         <button
           className={`nav-theme-switcher nav-theme-switcher--${theme}`}
           onClick={handleClickSwitcher}

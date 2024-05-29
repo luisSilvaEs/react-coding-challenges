@@ -35,12 +35,14 @@
         color: red;
     }
 
-    input.correct-email {
+    input.correct-email,
+    input.valid-password {
         color: black;
         border: 2px solid green;
     }
 
-    .error-email-message {
+    .error-email-message,
+    .error-password-message {
         display: flex;
         align-items: center;
         color: red;
@@ -60,7 +62,8 @@
         }
     }
 
-    input.error-email-message {
+    input.error-email-message,
+    input.error-password-message {
         color: black;
         border: 1px solid red;
     }
