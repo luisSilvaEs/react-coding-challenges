@@ -1,14 +1,14 @@
 import { useRef, useState } from "react";
-import Input from "./Input";
+import Field from "./Field";
 import "./Form.scss";
 
 const Form = () => {
-  const username = useRef<HTMLInputElement>(null);
-  const emailUser = useRef<HTMLInputElement>(null);
-  const [errorEmailState, setError] = useState<string>(""); //This notation is named "generic" and even no necessary but improves code readibily
+  const usernameValue = useRef<HTMLInputElement>(null);
+
+  const emailUserValue = useRef<HTMLInputElement>(null);
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-  const errorEmail = {
+  const errorEmailSettings = {
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -21,61 +21,23 @@ const Form = () => {
         aria-hidden="true"
       >
         <path
-          fill-rule="evenodd"
-          clip-rule="evenodd"
+          fillRule="evenodd"
+          clipRule="evenodd"
           d="M14.5 8C14.5 11.5899 11.5899 14.5 8 14.5C4.41015 14.5 1.5 11.5899 1.5 8C1.5 4.41015 4.41015 1.5 8 1.5C11.5899 1.5 14.5 4.41015 14.5 8ZM16 8C16 12.4183 12.4183 16 8 16C3.58172 16 0 12.4183 0 8C0 3.58172 3.58172 0 8 0C12.4183 0 16 3.58172 16 8ZM4.46967 5.53033L6.93934 8L4.46967 10.4697L5.53033 11.5303L8 9.06066L10.4697 11.5303L11.5303 10.4697L9.06066 8L11.5303 5.53033L10.4697 4.46967L8 6.93934L5.53033 4.46967L4.46967 5.53033Z"
           fill="currentColor"
         ></path>
       </svg>
     ),
-    message: errorEmailState,
+    message: "Please enter a valid email address.",
     validationPattern: emailRegex,
   };
 
-  const passwordUser = useRef<HTMLInputElement>(null);
-  const [errorPasswordState, setErrorPassword] = useState<string>("");
-
+  const passwordUserValue = useRef<HTMLInputElement>(null);
   const passwordRegex = /^(?=.*[A-Z])(?=.*[\*&\#\$!]).{6,}$/;
-
-  const errorPassword = {
-    message: errorPasswordState,
+  const errorPasswordSettings = {
+    message:
+      "Password must start with a capital letter, 6 characters lenght at least and have one of the following characters: #, $, # !",
     validationPattern: passwordRegex,
-  };
-
-  const validateFullEmailFormatAfterTyping = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    const email = event.target.value;
-
-    if (emailRegex.test(email)) {
-      setError("");
-    }
-  };
-
-  const validateEmailOnLeaveInput = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    const email = event.target.value;
-
-    if (!emailRegex.test(email)) {
-      setError("Please enter a valid email address.");
-    } else {
-      setError("");
-    }
-  };
-
-  const validatePasswordOnLeaveInput = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    const password = event.target.value;
-
-    if (!passwordRegex.test(password)) {
-      setErrorPassword(
-        "Password must start with a capital letter, 6 characters lenght at least and have one of the following characters: #, $, # !"
-      );
-    } else {
-      setErrorPassword("");
-    }
   };
 
   return (
@@ -86,30 +48,27 @@ const Form = () => {
       </div>
       <div className="container mx-auto b-form-component flex justify-center mt-9">
         <form action="" className="w-52">
-          <Input
+          <Field
             type="text"
             id="username"
             labelWording="Username:"
-            value={username}
+            value={usernameValue}
           />
-          <Input
+          <Field
             classesForLabel="requiered"
-            error={errorEmail}
+            errorSettings={errorEmailSettings}
             type="email"
             id="email"
             labelWording="Email:"
-            value={emailUser}
-            handleBlur={validateEmailOnLeaveInput}
-            handleOnChange={validateFullEmailFormatAfterTyping}
+            value={emailUserValue}
           />
-          <Input
+          <Field
             classesForLabel="requiered"
-            error={errorPassword}
+            errorSettings={errorPasswordSettings}
             type="password"
             id="password"
             labelWording="Pasword:"
-            value={passwordUser}
-            handleBlur={validatePasswordOnLeaveInput}
+            value={passwordUserValue}
           />
           <button
             onClick={() => {}}
