@@ -12,6 +12,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v1
 
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '21' # Specify the Node.js version you want to use
+
+      - name: Install dependencies
+        run: npm install
+
       - name: Generate build app with latest changes
         run: npm run build
 
