@@ -1,0 +1,75 @@
+.b-form-component {
+    
+    form {
+        input {
+            border-width: 1px;
+            border-radius: 4px;
+            border-color: #ccc;
+            &, label {
+                display: block;
+            }
+        }
+    
+    
+    }
+
+    button {
+        border-radius: 4px;
+        border: 1px solid #5162D4;
+        padding: 8px 12px;
+        margin: 4px;
+        margin-top: 32px;
+    }
+
+    &__submit-button {
+        background-color: #5162D4;
+        color: white;
+    }
+
+    &__cancel-button {
+        color: #5162D4;
+    }
+
+    .requiered::after {
+        content: "*";
+        color: red;
+    }
+
+    input.valid-format {
+        color: black;
+        border: 2px solid green;
+    }
+
+    .error-message {
+        display: flex;
+        align-items: center;
+        color: red;
+
+        &:not(input) {
+            margin: 8px 0;
+        }
+
+        svg {
+            display: inline-block;
+            margin-right: 5px;
+        }
+
+        span {
+            color: red;
+            font-size: 10px;
+        }
+    }
+
+    input.error-message {
+        color: black;
+        border: 1px solid red;
+    }
+
+}
+
+.notes-about-component {
+    ul li {
+        list-style-type: disc;
+        color: var(--text-primary);
+    }
+}
