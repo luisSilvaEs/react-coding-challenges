@@ -16,6 +16,20 @@ Requirements for the app are:
 * .env.development.local
 * .env.production.local
 
+## How to deploy app
+
+The built version of this app is stored in S3 is linked to the domain (http://luissilvacoding.com/)[http://luissilvacoding.com/]
+through Amazon Route 53.
+
+### Manually deploy the app to S3
+
+- Generate deployable files (these live in the build folder) by running: `npm run build`
+- Deploy to S3: `npm run sync`
+
+### Deploy trough GitHub actions
+
+Simply create a Pull Request to main branch
+
 ### References
 
 - [Top 15 React Coding Challenges to Hire React Developers](https://blog.imocha.io/react-coding-challenges)
