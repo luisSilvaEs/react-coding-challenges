@@ -21,7 +21,7 @@ const Home = ({ exercisesPages }: HomeProps) => {
           Welcome to <span>React coding</span> challenges implementations!!
         </h1>
         <p>
-          In this page you will find my implementations from
+          In this page you will find my implementations from <br />
           <a href="https://blog.imocha.io/react-coding-challenges">
             Top 15 React Coding Challenges to Hire React Developers
           </a>
