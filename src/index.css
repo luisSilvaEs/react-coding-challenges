@@ -21,3 +21,8 @@ html, div {
 p, b, label {
     color: var(--text-secondary); 
 }
+
+code {
+    white-space: pre;
+    font-size: 85%;
+}

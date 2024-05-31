@@ -41,7 +41,7 @@ const Form = () => {
   };
 
   return (
-    <>
+    <div className="flex flex-col">
       <div className="container mx-auto text-center">
         <p>Please fill fields below to register.</p>
         <b>Email and password fields are mandatory</b>
@@ -84,7 +84,45 @@ const Form = () => {
           </button>
         </form>
       </div>
-    </>
+      <div className="notes-about-component container mx-auto mt-9 flex-col justify-center indent-8">
+        <h2 className="text-center text-lg font-bold">
+          Some pointers here to remember:
+        </h2>
+        <ul>
+          <li>
+            <p>
+              Use "states" ONLY if the storage of data and its update implies
+              the component needs to be re-render
+            </p>
+          </li>
+          <li>
+            <p>
+              Use "useRef" as alternative to store data if there is no need to
+              re-render the component
+            </p>
+          </li>
+          <li>
+            <p>
+              When "state" is an object or an array, make sure to update ONLY
+              the specific property or item instead of wrongly update the whole
+              object or array.
+            </p>
+            <p>To do this, make sure to use correctly the setter function.</p>
+            <p>
+              <p>
+                For example, in Field component we updated the <i>error</i>{" "}
+                state as follow:
+              </p>
+              <code className="italic pl-9">{`
+                setError((prevState) => {
+                    return prevState ? { ...prevState, message: "" } : { message: "" };
+                });
+              `}</code>
+            </p>
+          </li>
+        </ul>
+      </div>
+    </div>
   );
 };
 
