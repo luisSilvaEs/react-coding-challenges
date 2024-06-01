@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import { useState } from "react";
-import TopMenu from "./components/ui/menu/Menus";
+import TopMenu from "./components/ui/Menu/Menus";
 import Home from "./pages/home/Home";
 import About from "./pages/about/About";
 import Contact from "./pages/contact/Contact";

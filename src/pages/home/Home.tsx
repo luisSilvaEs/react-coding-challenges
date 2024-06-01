@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Card from "../../components/ui/card/Cards";
+import Card from "../../components/ui/Card/Cards";
 import "./Home.scss";
 
 interface Challenge {
