@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 interface FieldError {
   icon?: JSX.Element;
@@ -12,7 +12,7 @@ interface InputProps {
   type: "email" | "text" | "password";
   id: string;
   labelWording: string;
-  value?: any;
+  value?: React.RefObject<HTMLInputElement>;
   errorSettings?: FieldError;
 }
 
@@ -70,16 +70,16 @@ const Field = ({
         onBlur={validateInputContentOnLeaveInput}
         onChange={validateInputContentFormatAfterTyping}
         className={`${classesForInput ? classesForInput : ""} ${
-          error?.validationPattern?.test(value.current?.value || "")
+          error?.validationPattern?.test(value?.current?.value || "")
             ? "valid-format"
-            : value.current?.value && value.current?.value !== ""
+            : value?.current?.value && value?.current?.value !== ""
             ? "error-message"
             : "-"
         }`}
       />
-      {value.current?.value &&
-      value.current?.value !== "" &&
-      !error?.validationPattern?.test(value.current?.value || "") ? (
+      {value?.current?.value &&
+      value?.current?.value !== "" &&
+      !error?.validationPattern?.test(value?.current?.value || "") ? (
         <div className="error-message">
           {errorSettings?.icon}
           <span>{errorSettings?.message}</span>

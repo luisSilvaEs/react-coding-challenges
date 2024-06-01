@@ -7,7 +7,7 @@ import Contact from "./pages/contact/Contact";
 import ExercisesRoute from "./pages/exercises/ExercisesRoute";
 
 const App = () => {
-  const [challenges, setChallenge] = useState([
+  const [challenges] = useState([
     {
       name: "User Registration Form",
       id: "urf1",
@@ -47,10 +47,7 @@ const App = () => {
       <TopMenu theme={theme} switchThemeFunction={switchTheme} />
       <Routes>
         <Route path="/" element={<Home exercisesPages={challenges} />} />
-        <Route
-          path="/exercises/*"
-          element={<ExercisesRoute exercisesPages={challenges} />}
-        />
+        <Route path="/exercises/*" element={<ExercisesRoute />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>

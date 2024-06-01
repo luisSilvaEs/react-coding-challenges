@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import Form from "../../components/challenges/form/Form";
-
+/*
 interface Challenge {
   id: string;
   name: string;
@@ -8,11 +8,12 @@ interface Challenge {
   component?: string;
 }
 
-interface ExercisesRoute {
-  exercisesPages: Challenge[];
+interface ExercisesRouteProps {
+  exercisesPages?: Challenge[];
 }
+*/
 
-const ExercisesRoute = ({ exercisesPages }: ExercisesRoute) => {
+const ExercisesRoute = () => {
   return (
     <>
       <h1>Exercises</h1>
