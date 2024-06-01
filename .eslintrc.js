@@ -3,6 +3,9 @@ module.exports = {
     parserOptions: {
       ecmaVersion: 2020,
       sourceType: 'module',
+      ecmaFeatures: {
+        jsx: true,
+      },
     },
     settings: {
       react: {
@@ -17,9 +20,12 @@ module.exports = {
       'plugin:jsx-a11y/recommended',
     ],
     rules: {
-      // Add your custom rules here
+      'react/react-in-jsx-scope': 'off',
       '@typescript-eslint/no-redeclare': 'warn',
       '@typescript-eslint/no-unused-vars': 'warn',
+      'react/no-unescaped-entities': 'off',
+      'no-useless-escape': 'off',
+      '@typescript-eslint/no-empty-function': 'off',
     },
     env: {
       browser: true,
